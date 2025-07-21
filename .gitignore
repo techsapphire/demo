@@ -1,0 +1,8 @@
+# Build artifacts
+bin/
+obj/
+# Dotnet user-specific
+*.user
+# Misc
+*.DS_Store
+dotnet-install.sh
