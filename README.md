@@ -21,3 +21,15 @@ This repository contains a simple .NET console application that performs basic a
    ```bash
    dotnet run --project CalculatorApp
    ```
+
+Example session:
+
+```
+Simple Calculator - Addition and Subtraction
+Enter '+' for addition, '-' for subtraction, or 'q' to quit: +
+Enter the first number: 5
+Enter the second number: 3
+Result: 8
+
+Enter '+' for addition, '-' for subtraction, or 'q' to quit: q
+```

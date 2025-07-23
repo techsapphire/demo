@@ -26,20 +26,18 @@ namespace CalculatorApp
                     Console.Write("Enter the second number: ");
                     double num2 = double.Parse(Console.ReadLine() ?? "0");
 
-                    double result = op switch
+                    if (op == "+")
                     {
-                        "+" => num1 + num2,
-                        "-" => num1 - num2,
-                        _ => double.NaN
-                    };
-
-                    if (double.IsNaN(result))
+                        Console.WriteLine($"Result: {num1 + num2}\n");
+                    }
+                    else if (op == "-")
+                    {
+                        Console.WriteLine($"Result: {num1 - num2}\n");
+                    }
+                    else
                     {
                         Console.WriteLine("Invalid operation\n");
-                        continue;
                     }
-
-                    Console.WriteLine($"Result: {result}\n");
                 }
                 catch (Exception ex)
                 {
