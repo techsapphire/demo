@@ -6,12 +6,18 @@ namespace CalculatorApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Simple Calculator - Addition and Subtraction");
+            Console.WriteLine("Simple Calculator - Add, Subtract, Multiply, Divide, BMI");
 
             while (true)
             {
-                Console.WriteLine("Enter 'b' to calculate BMI.");
-                Console.Write("Enter '+' for addition, '-' for subtraction, or 'q' to quit: ");
+                Console.WriteLine("Enter an operation:");
+                Console.WriteLine("  '+' for addition");
+                Console.WriteLine("  '-' for subtraction");
+                Console.WriteLine("  '*' for multiplication");
+                Console.WriteLine("  '/' for division");
+                Console.WriteLine("  'b' for BMI calculation");
+                Console.WriteLine("  'q' to quit");
+                Console.Write("Choice: ");
                 string? op = Console.ReadLine();
 
                 if (string.Equals(op, "q", StringComparison.OrdinalIgnoreCase))
@@ -27,15 +33,7 @@ namespace CalculatorApp
                     Console.Write("Enter the second number: ");
                     double num2 = double.Parse(Console.ReadLine() ?? "0");
 
-                    if (op == "+")
-                    {
-                        Console.WriteLine($"Result: {num1 + num2}\n");
-                    }
-                    else if (op == "-")
-                    {
-                        Console.WriteLine($"Result: {num1 - num2}\n");
-                    }
-                    else if (op == "b" || op == "B")
+                    if (op == "b" || op == "B")
                     {
                         double weight = num1;
                         double height = num2;
@@ -51,7 +49,16 @@ namespace CalculatorApp
                     }
                     else
                     {
-                        Console.WriteLine("Invalid operation\n");
+                        double result = op switch
+                        {
+                            "+" => num1 + num2,
+                            "-" => num1 - num2,
+                            "*" => num1 * num2,
+                            "/" => num2 != 0 ? num1 / num2 : throw new DivideByZeroException(),
+                            _ => throw new InvalidOperationException("Invalid operation")
+                        };
+
+                        Console.WriteLine($"Result: {result}\n");
                     }
                 }
                 catch (Exception ex)
