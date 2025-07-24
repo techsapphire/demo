@@ -1,13 +1,6 @@
 # Calculator App
 
-This repository contains a simple .NET console application that performs basic arithmetic operations.
 
-## Features
-- Addition, subtraction, multiplication, and division
-- Interactive prompt that repeats until you choose to quit
-
-## Building and Running
-1. Ensure that the .NET 8 SDK is installed (the repository includes a helper script `dotnet-install.sh`).
 2. Build the application:
    ```bash
    dotnet build CalculatorApp/CalculatorApp.csproj --configuration Release
@@ -16,3 +9,17 @@ This repository contains a simple .NET console application that performs basic a
    ```bash
    dotnet run --project CalculatorApp
    ```
+
+Example session:
+
+```
+Simple Calculator - Addition and Subtraction
+Enter '+' for addition, '-' for subtraction, or 'q' to quit: +
+Enter the first number: 5
+Enter the second number: 3
+Result: 8
+
+Enter '+' for addition, '-' for subtraction, or 'q' to quit: q
+```
+
+main
