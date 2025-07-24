@@ -6,11 +6,11 @@ namespace CalculatorApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Simple Calculator - Addition and Subtraction");
+            Console.WriteLine("Simple Calculator - Add, Subtract, Multiply, Divide");
 
             while (true)
             {
-                Console.Write("Enter '+' for addition, '-' for subtraction, or 'q' to quit: ");
+                Console.Write("Enter '+' for addition, '-' for subtraction, '*' for multiplication, '/' for division, or 'q' to quit: ");
                 string? op = Console.ReadLine();
 
                 if (string.Equals(op, "q", StringComparison.OrdinalIgnoreCase))
@@ -26,23 +26,22 @@ namespace CalculatorApp
                     Console.Write("Enter the second number: ");
                     double num2 = double.Parse(Console.ReadLine() ?? "0");
 
-                    if (op == "+")
+                    double result = op switch
                     {
-                        Console.WriteLine($"Result: {num1 + num2}\n");
-                    }
-                    else if (op == "-")
-                    {
-                        Console.WriteLine($"Result: {num1 - num2}\n");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid operation\n");
-                    }
+                        "+" => num1 + num2,
+                        "-" => num1 - num2,
+                        "*" => num1 * num2,
+                        "/" => num2 != 0 ? num1 / num2 : throw new DivideByZeroException(),
+                        _ => throw new InvalidOperationException("Invalid operation")
+                    };
+
+                    Console.WriteLine($"Result: {result}\n");
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Error: {ex.Message}\n");
                 }
+
             }
         }
     }
